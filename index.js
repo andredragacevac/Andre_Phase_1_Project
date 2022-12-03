@@ -1,7 +1,14 @@
-function renderShoe(){
+function renderBrand(brand){
     const li = document.createElement('li');
     li.className = 'shoe-brand';
 
-    document.querySelector('#brand-list').append(li);
+    const img = document.createElement('img');
+    img.src = brand.image;
+    img.alt = `${brand.name} logo`;
 
+    li.append(img);
+    document.querySelector('#brand-list').append(li);
 }
+fetch('http://localhost:3000/brands')
+.then((response) => response.json())
+.then((brands) => brands.forEach(renderBrand));
