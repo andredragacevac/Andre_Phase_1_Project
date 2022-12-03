@@ -1,0 +1,67 @@
+{
+	"shoes":[
+		{
+			"id": 1,
+			"brand": "Air Jordan",
+			"model": "11 Retro",
+			"name": "Cherry",
+			"color": "White/Varsity Red/Black",
+			"retail price": "$225",
+			"date": "",
+			"image": ""
+
+		},
+		{
+			"id": 2,
+			"brand": "Nike",
+			"model": "Dunk Low",
+			"name": "Year of the Rabbit",
+			"colorway": "White/Red/Blue",
+			"retail price": "$110",
+			"date": "",
+			"image": ""
+
+		},
+		{
+			"id": 3,
+			"brand": ["New Balance", "Bodega"],
+			"model": "9060",
+			"name": "Bodega x 9060 - Age of Discovery",
+			"colorway": "Blue",
+			"retail price": "$180",
+			"date": "",
+			"image": ""
+
+
+		},
+		{
+			"id": 4,
+			"brand": "Addidas",
+			"model": "Forum",				
+			"name": "Bad Bunny x Forum Buckle Low",
+			"colorway": "White",
+			"retail price": "$160",
+			"date": "",
+			"image": ""
+
+
+		},
+		{
+			"id": 5,
+			"brand": ["Bape","Marvel"],
+			"model": "Bape Sta",
+			"name": "Spider-Man",
+			"colorway": "Red/Blue/Black",
+			"retail price": "$150",
+			"date": "",
+			"image": ""
+		}
+	]
+}
+
+
+
+
+
+
+
