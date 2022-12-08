@@ -27,7 +27,7 @@
 		{
 			"id": 3,
 			"brandId": 3,
-			"brand": ["New Balance", "Bodega"],
+			"brand": "New Balance x Bodega",
 			"model": "9060",
 			"name": "Bodega x 9060 - Age of Discovery",
 			"colorway": "Blue",
@@ -40,8 +40,8 @@
 		{
 			"id": 4,
 			"brandId": 4,
-			"brand": "Addidas",
-			"model": "Forum",				
+			"brand": "Adidas",
+			"model": "Forum Low",				
 			"name": "Bad Bunny x Forum Buckle Low",
 			"colorway": "White",
 			"retail price": "$160",
@@ -53,7 +53,7 @@
 		{
 			"id": 5,
 			"brandId": 5,
-			"brand": ["Bape","Marvel"],
+			"brand": "Bape x Marvel",
 			"model": "Bape Sta",
 			"name": "Spider-Man",
 			"colorway": "Red/Blue/Black",
@@ -75,7 +75,7 @@
 		},
 		{
 			"id": 3,
-			"name": ["New Balance", "Bodega"],
+			"name": "New Balance",
 			"image": ""
 		},
 		{
@@ -85,7 +85,7 @@
 		},
 		{
 			"id": 5,
-			"name": ["Bape","Marvel"],
+			"name": "Bape",
 			"image": ""
 		}
 	]
