@@ -1,7 +1,8 @@
 {
-	"shoes":[
+    "shoes":[
 		{
 			"id": 1,
+			"brandId": 1,
 			"brand": "Air Jordan",
 			"model": "11 Retro",
 			"name": "Cherry",
@@ -13,6 +14,7 @@
 		},
 		{
 			"id": 2,
+			"brandId": 2,
 			"brand": "Nike",
 			"model": "Dunk Low",
 			"name": "Year of the Rabbit",
@@ -24,6 +26,7 @@
 		},
 		{
 			"id": 3,
+			"brandId": 3,
 			"brand": ["New Balance", "Bodega"],
 			"model": "9060",
 			"name": "Bodega x 9060 - Age of Discovery",
@@ -36,6 +39,7 @@
 		},
 		{
 			"id": 4,
+			"brandId": 4,
 			"brand": "Addidas",
 			"model": "Forum",				
 			"name": "Bad Bunny x Forum Buckle Low",
@@ -48,6 +52,7 @@
 		},
 		{
 			"id": 5,
+			"brandId": 5,
 			"brand": ["Bape","Marvel"],
 			"model": "Bape Sta",
 			"name": "Spider-Man",
@@ -56,9 +61,35 @@
 			"date": "",
 			"image": ""
 		}
+	],
+	"brands":[
+		{
+			"id": 1,
+			"name": "Air Jordan",
+			"image": "https://ibb.co/2syWsnn"
+		},
+		{
+			"id": 2,
+			"name": "Nike",
+			"image": ""
+		},
+		{
+			"id": 3,
+			"name": ["New Balance", "Bodega"],
+			"image": ""
+		},
+		{
+			"id": 4,
+			"name": "Adidas",
+            "image": ""
+		},
+		{
+			"id": 5,
+			"name": ["Bape","Marvel"],
+			"image": ""
+		}
 	]
 }
-
 
 
 
