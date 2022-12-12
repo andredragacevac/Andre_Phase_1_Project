@@ -2,6 +2,7 @@
 function renderBrand(brand){
   const li = document.createElement('li');
   li.className = 'shoe-brand';
+  li.id = brand.id
 
   const img = document.createElement('img');
   img.src = brand.image;
@@ -40,7 +41,7 @@ function shoesByBrand (brand){
   })
 }
 function hideInactiveButtons (brand){
-  document.querySelectorAll('button').forEach(element => {
+  document.querySelectorAll('.shoe-brand').forEach(element => {
     element.setAttribute('hidden', true)
    if(brand.id == element.id){
     element.removeAttribute('hidden')
@@ -48,19 +49,50 @@ function hideInactiveButtons (brand){
   })
 }
 function showAllButtons(){
-  document.querySelectorAll('button').forEach(element => {
+  document.querySelectorAll('.shoe-brand').forEach(element => {
     element.removeAttribute('hidden')})
 }
 function showAllShoes(){
   document.querySelectorAll('.shoes-li').forEach(element => {
     element.removeAttribute('hidden')})
 }
+//form
 
-function renderForm(){
- const form = document.createElement('form')
- 
+const toggleShoeFormButton = document.querySelector('#toggleShoeForm');
+const shoeForm = document.querySelector('#new-shoe-form');
+let shoeFormVisible = false;
+hideShoeForm();
+
+function toggleShoeForm(){
+  if(shoeFormVisible){
+    showShoeForm();
+    console.log('1')
+  } else {
+    hideShoeForm();
+    console.log('2')
+  }
 }
 
+function showShoeForm (){
+  shoeFormVisible = false;
+  document.querySelectorAll('#new-shoe-form').forEach(element => {
+    element.removeAttribute('hidden')
+  })
+}
+
+function hideShoeForm(){
+  shoeFormVisible = true;
+  document.querySelectorAll('#new-shoe-form').forEach(element => {
+    element.setAttribute('hidden', true)})
+}
+
+toggleShoeFormButton.addEventListener('click', ()=> {
+  toggleShoeForm()
+});
+
+shoeForm.addEventListener('submit', function(event){
+  event.preventDefault();
+});
 
 //shoe container display
 function renderShoe (shoe){
@@ -89,10 +121,20 @@ function renderShoe (shoe){
 
   const pDate = document.createElement('p');
   pDate.textContent = shoe.date;
+  pDate.setAttribute('hidden', true)
 
 
   li.append(h3,pModel,img,pName,pDate);
   document.querySelector('#shoe-list').append(li);
+
+  li.addEventListener('mouseover', ()=>{
+    li.className = 'shoes-li displayMouseover'
+    pDate.removeAttribute('hidden')
+  })
+  li.addEventListener('mouseout', ()=>{
+    li.className = 'shoes-li'
+    pDate.setAttribute('hidden', true)
+  })
 }
 
 getJSON("http://localhost:3000/shoes")
@@ -103,9 +145,6 @@ getJSON("http://localhost:3000/shoes")
 getJSON("http://localhost:3000/brands")
   .then((brands) => {
     brands.forEach(brand => renderBrand(brand))
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(element => console.log(element))
-    console.log(buttons)
 })
 
 function getJSON(url) {
