@@ -6,7 +6,6 @@ function renderBrand(brand){
 
   const img = document.createElement('img');
   img.src = brand.image;
-  img.alt = `${brand.name} logo`;
   img.className = brand.name;
 
   const btn = document.createElement('button');
@@ -66,39 +65,76 @@ hideShoeForm();
 function toggleShoeForm(){
   if(shoeFormVisible){
     showShoeForm();
-    console.log('1')
+    toggleShoeFormButton.textContent = "Close Form";
   } else {
     hideShoeForm();
-    console.log('2')
+    toggleShoeFormButton.textContent = "New Shoe";
   }
 }
 
 function showShoeForm (){
   shoeFormVisible = false;
   document.querySelectorAll('#new-shoe-form').forEach(element => {
-    element.removeAttribute('hidden')
+    element.classList.remove('hidden')
   })
 }
 
 function hideShoeForm(){
   shoeFormVisible = true;
   document.querySelectorAll('#new-shoe-form').forEach(element => {
-    element.setAttribute('hidden', true)})
+    element.classList.add('hidden')})
 }
 
 toggleShoeFormButton.addEventListener('click', ()=> {
   toggleShoeForm()
 });
 
-shoeForm.addEventListener('submit', function(event){
-  event.preventDefault();
-});
+
+const brandId = {
+  "Air Jordan": 1,
+  "Nike": 2,
+  "New Balence": 3,
+  "Adidas": 4,
+  "Bape": 5
+}
+function inputShoeBrandId(name){
+  return brandId[name]
+}
+
+shoeForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const shoe = {
+    brandId: inputShoeBrandId(e.target.brand.value),
+    brand: e.target.brand.value,
+    model: e.target.model.value,
+    name: e.target.name.value,
+    retailPrice: e.target.retailPrice.value,
+    date: e.target.date.value,
+    image: "https://mbfn.org/wp-content/uploads/2020/09/image-coming-soon-placeholder.png"
+  }
+  //renderShoe(shoe);
+  postJSON("http://localhost:3000/shoes", shoe)
+    .then(shoe => {
+     renderShoe(shoe)
+     e.target.reset();
+    })
+})
+// function handleSubmit(event) {
+//   const data = new FormData(event.shoes);
+
+//   const value = data.get('brand');
+
+//   if(value == shoes.brand){
+//     shoes.brandId = brand.id
+//   }
+
+// }
 
 //shoe container display
 function renderShoe (shoe){
   const li = document.createElement('li');
   li.className = 'shoes-li';
-
+  console.log(shoe)
   li.id = shoe.brandId;
   
 
@@ -116,25 +152,33 @@ function renderShoe (shoe){
 
   const img = document.createElement('img');
   img.src = shoe.image;
-  img.alt = `${shoe.model} picture`;
-
 
   const pDate = document.createElement('p');
-  pDate.textContent = shoe.date;
-  pDate.setAttribute('hidden', true)
+  pDate.className = "tooltip";
+  pDate.textContent = shoe.date
+  const span = document.createElement('span')
 
+  span.className = "tooltiptext";
+  span.append(pDate);
 
-  li.append(h3,pModel,img,pName,pDate);
+  const pPrice = document.createElement('p');
+  pPrice.className = "tooltip";
+  pPrice.textContent = shoe.retailPrice;
+  span.style.visibility = 'hidden';
+  span.append(pPrice);
+
+  li.append(h3,pModel,img,pName, span);
   document.querySelector('#shoe-list').append(li);
 
   li.addEventListener('mouseover', ()=>{
-    li.className = 'shoes-li displayMouseover'
-    pDate.removeAttribute('hidden')
+    li.className = 'shoes-li'
+    span.style.visibility = 'visible'
   })
   li.addEventListener('mouseout', ()=>{
     li.className = 'shoes-li'
-    pDate.setAttribute('hidden', true)
+    span.style.visibility = 'hidden'
   })
+
 }
 
 getJSON("http://localhost:3000/shoes")
@@ -156,4 +200,19 @@ function getJSON(url) {
           throw (response.statusText)
         }
       })
+}
+function postJSON(url, data) {
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw response;
+    })
 }
