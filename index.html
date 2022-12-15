@@ -29,26 +29,38 @@
             <ul id="shoe-list">
             </ul>
         </div>
-        <div>
+        <div id="form-wrapper">
             <button id="toggleShoeForm" >New Shoe</button>
-            <form id="new-shoe-form" class="">
+            <form id="new-shoe-form" class="hidden">
+                <h3>
+                    This form is for adding new sneakers to the page!
+                </h3>
+                <p>
+                    Please fill out the "Brand" as you see others on the page to maintain the websites functionality.
+                </p>
+                <p>
+                    If you are unsure about the other inputs just enter "TBD" and I will do my best to update the info ASAP.
+                </p>
+                <p>
+                    Thank you!
+                </p>
                 <label >Brand:</label>
-                <input >
+                <input type="text" id="form-brand" name="brand">
 
                 <label>Model:</label>
-                <input >
+                <input type="text" id="form-model" name="model">
 
                 <label>Name:</label>
-                <input >
+                <input type="text" id="form-name" name="name">
 
                 <label>Colorway</label>
-                <input >
+                <input type="text" id="form-colorway" name="colorway">
 
                 <label>Retail Price:</label>
-                <input >
+                <input type="text" id="form-price" name="retailPrice">
 
                 <label>Date:</label>
-                <input >
+                <input type="text" id="form-date" name="date">
 
                 <input type="submit" value="Add Shoe">
             </form>
